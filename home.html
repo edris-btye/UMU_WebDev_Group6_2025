@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .container{
+            background: url(images/7.webp);
+            width: 100%;
+            height: 90vh;
+        }
+        header{
+            height: 90px;
+           display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 100px;
+            
+        }
+        .logo1{
+            width:100px;
+            height:100px;
+            border-radius:50px;
+            background:transparent;
+            margin-left: 50px;
+        }
+        nav{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav ul{
+            display: flex;
+            gap: 30px;
+            float: right;
+            margin-right: 70px;
+        }
+        nav ul li {
+            height: 0px;
+            padding: 20px;
+            font-size: 1.2em;
+            font-weight: bolder;
+            cursor: pointer;
+            font-family: bahnschrift light;
+            position: relative;
+            
+        }
+        nav ul li{
+            list-style-type: none;
+            text-decoration: none;
+        }
+        nav ul li a{
+            text-decoration: none;
+            color: black;
+        }
+        nav ul li a:hover{
+            color: blue;
+
+        }
+        nav ul li a::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: blue;
+            transition: 0.3s;
+        }
+        nav ul li a:hover::after{
+            width: 100%;
+        }
+        .info{
+            padding-top: 50px;
+            display: inline-block;
+            
+        }
+        #about{
+            height:300px ;
+            width:500px ;
+            border: 2px solid red;
+            font-family: bahnschrift light;
+            text-align: center;
+            box-shadow: 12px 12px 12px rgba(0,0,0,0.5);
+            background: rgb(238, 190, 100);
+            
+            border-radius: 20px;
+        }
+        #mission{
+            height:250px ;
+            width:500px ;
+            border: 2px solid red;
+            font-family: bahnschrift light;
+            text-align: center;
+            box-shadow: 12px 12px 12px rgba(0,0,0,0.5);
+            background: rgb(114, 114, 240);
+            margin-top: 50px;
+            
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/logo1.png"class="logo1" >
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#conatct">Contact</a></li>
+                    <li><a href="#value">Why Us?</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+    </div>
+    <div class="info">
+        <section id="about">
+        <h1>About Us</h1>
+        <p>Welcome to our shop, where quality, reliability, and customer satisfaction come first. We are committed to providing products that make your life easier, more convenient, and more enjoyable. From the moment you step into our store, our mission is to offer you the best service, genuine products, and a shopping experience you can trust.
+
+            We believe in honesty, fair pricing, and treating every customer with care. Our team works hard every day to make sure you find exactly what you’re looking for — whether it’s the latest items, durable materials, or something unique for your home and daily needs.
+
+            With experience, dedication, and a passion for excellent service, we continue to grow and improve so we can serve you better. Your satisfaction is our priority, and we are always here to help.</p>
+        </section>
+        <section id="mission">
+            <h1>Mission</h1>
+            <p>Our mission is to provide high-quality products at affordable prices while delivering a friendly, reliable, and customer-centered shopping experience. We aim to make every customer feel valued by offering trustworthy services, genuine products, and consistent support. Through honesty, convenience, and dedication, we strive to become a shop that people can depend on every day.</p>
+        </section>
+        <section>
+            <img src="images/poster.png" style="height: 700px;width: 500px;border-radius:20px ;">
+        </section>
+    </div>
+</body>
+</html>

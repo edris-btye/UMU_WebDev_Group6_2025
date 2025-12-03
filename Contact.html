@@ -33,7 +33,7 @@
       padding: 0 20px;
     }
 
-    /* Header */
+   
     header {
       background: var(--dark);
       color: white;
@@ -68,7 +68,7 @@
       font-weight: 500;
     }
 
-    /* Main Contact Section */
+   
     .contact-section {
       margin-top: 120px;
       padding: 60px 0;
@@ -112,7 +112,7 @@
       color: var(--dark);
     }
 
-    /* Form Styles */
+    
     .contact-form form {
       background: white;
       padding: 40px;
@@ -180,7 +180,7 @@
       border: 1px solid #c3e6cb;
     }
 
-    /* Footer */
+    
     footer {
       background: var(--dark);
       color: white;
@@ -189,7 +189,7 @@
       margin-top: 80px;
     }
 
-    /* Responsive */
+    
     @media (max-width: 768px) {
       .contact-grid {
         grid-template-columns: 1fr;
@@ -216,7 +216,7 @@
 </head>
 <body>
 
-  <!-- Header -->
+  
   <header>
     <div class="container header-content">
       <div class="logo">Shop<span>lift</span></div>
@@ -224,7 +224,7 @@
     </div>
   </header>
 
-  <!-- Contact Section -->
+ 
   <section class="contact-section">
     <div class="container">
       <h1 style="text-align:center; font-size:3rem; color:var(--dark); margin-bottom:20px;">
@@ -235,7 +235,7 @@
       </p>
 
       <div class="contact-grid">
-        <!-- Left: Contact Info -->
+       
         <div class="contact-info">
           <div class="info-card">
             <i class="fas fa-phone-alt"></i>
@@ -303,24 +303,28 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  
   <footer>
     <div class="container">
-      <p>Kabuye Allan,Ssemwanga l. Philly,Kigundu Edris ,Ssekatawa Emmanuel,Agaba Emmanuel Mwesigye Karist </p>
-      <p>&copy; 2025 Shoplift - Africa's #1 Online Shopping Destination. All rights reserved.</p>
+                    <li>Kiggundu Edris 2025-B072-32864</li>
+                    <li>Agaba Emmanuel 2025-B221-32001</li>
+                    <li>Ssekatawa Emmanuel 2025-B072-30507</li>
+                    <li>Kabuye Allan 2025-B072-31989<li>
+                    <li>Mwesigye Karist 2025-B072-31987</li>
+                    <li>ssemwanga L Philly 2025-B072-34062</li> </p>
+      
     </div>
   </footer>
 
   <script>
-    // Simple form handling with success message
+    
     const form = document.getElementById('contactForm');
     const successMsg = document.getElementById('successMsg');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Here you would normally send data to backend
-      // For demo, just show success message
+      
       form.style.opacity = '0.6';
       successMsg.style.display = 'block';
 

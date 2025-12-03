@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - ShopLift</title>
+    <style>
+        :root {
+            --orange: #ff6a00;
+            --light-bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --text: #222222;
+            --border: #e0e0e0;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            background: white;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--orange);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .container { 
+                grid-template-columns: 1fr; 
+                margin: 20px auto;
+            }
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+        h2 {
+            color: var(--orange);
+            margin-top: 0;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin: 18px 0 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.15);
+        }
+        .order-summary {
+            background: #fff;
+            border: 1px solid var(--border);
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .summary-item:last-child { border-bottom: none; }
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--orange);
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 2px solid var(--orange);
+        }
+        button {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            color: #666;
+            font-size: 14px;
+            margin-top: 80px;
+            border-top: 1px solid #eee;
+        }
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        label[for] {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+             cursor: pointer;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ShopLift</div>
+    </header>
+
+    <div class="container">
+        <!-- Billing & Shipping Info -->
+        <div class="card">
+            <h2>Billing & Shipping Information</h2>
+            <form id="checkoutForm">
+                <label>Full Name *</label>
+                <input type="text" required>
+
+                <label>Email Address *</label>
+                <input type="email" required>
+
+                <label>Phone Number *</label>
+                <input type="tel" required>
+
+                <label>Address *</label>
+                <input type="text" placeholder="Street Address" required>
+                <input type="text" placeholder="Apartment, suite, etc. (optional)">
+
+                <label>City *</label>
+                <input type="text" required>
+
+                <label>Country *</label>
+                <select required>
+                    <option value="">Select Country</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="GH">Ghana</option>
+                    <option value="KE">Kenya</option>
+                    <option value="ZA">South Africa</option>
+                </select>
+
+                <label>Postal Code</label>
+                <input type="text">
+            </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="card order-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                <span>Wireless Earbuds x2</span>
+                <span>UGX 150,000</span>
+            </div>
+            <div class="summary-item">
+                <span>Smart Watch</span>
+                <span>UGX 185,000</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping</span>
+                <span>UGX 13,500</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total</span>
+                <span>UGX 348,500</span>
+            </div>
+
+            <h2 style="margin-top: 35px;">Payment Method</h2>
+            <label><input type="radio" name="payment" checked> Pay with Card (Powered by Paystack/Flutterwave)</label>
+            <label><input type="radio" name="payment"> Bank Transfer</label>
+            <label><input type="radio" name="payment"> Pay on Delivery (Selected areas only)</label>
+
+            <button type="submit" form="checkoutForm">
+                Complete Order
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        © 2025 ShopLift - Africa's #1 Online Shopping Destination. All rights reserved.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Interactive Cart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: ORANGE;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-bar {
+            width: 45%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .cart-btn {
+            padding: 10px 20px;
+            background: white;
+            color: ORANGE;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background:ORANGE;
+            color: white;
+            border: none;
+            margin-top: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+    
+        #cartPanel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -3px 0 10px rgba(0, 0, 0, 0);
+            transition: 0.4s;
+            padding: 20px;
+        }
+
+        #cartPanel.open {
+            right: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .remove-btn {
+            background: red;
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <input type="text" id="search" class="search-bar" placeholder="Search carts...">
+
+    <select id="filter">
+        <option value="all">All Categories</option>
+        <option value="food">Food Carts</option>
+        <option value="shopping">Shopping Carts</option>
+        <option value="product">Product Carts</option>
+    </select>
+
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id='count'>0</span>)</button>
+</header>
+
+<div class="container" id="itemsContainer"></div>
+<div id="cartPanel">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <hr>
+    <h3>Total: $<span id="total">0</span></h3>
+</div>
+
+<script>
+        const products = [
+        { name: "Food Cart", category: "food", price: 40, image: "images (5).jpeg" },
+        { name: "Shopping Cart", category: "shopping", price: 60, image: "Scc768ff83ca14ff4a1b12fe90d60338b1.jpg" },
+        { name: "Product Cart", category: "product", price: 50, image: "images (4).jpeg" }
+    ];
+
+    
+    const foodItems = [
+        { name: "Bananas", price: 5, image: "banana.jpg" },
+        { name: "Rice", price: 10, image: "rice.jpg" },
+        { name: "Pizza", price: 15, image: "pizza.jpg" },
+        { name: "Chicken", price: 12, image: "chicken.jpg" }
+    ];
+
+    let cart = [];
+    const container = document.getElementById("itemsContainer");
+
+    function loadProducts(list) {
+        container.innerHTML = "";
+        list.forEach(item => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p><b>$${item.price}</b></p>
+
+                    ${
+                        item.name === "Food Cart"
+                        ? `<button class="btn" onclick='openFoodItems()'>View Food Items</button>`
+                        : `<button class="btn" onclick='addToCart("${item.name}")'>Add to Cart</button>`
+                    }
+                </div>
+            `;
+        });
+    }
+
+    loadProducts(products);
+
+    /* SHOW FOOD ITEMS */
+    function openFoodItems() {
+        container.innerHTML = "";
+
+        foodItems.forEach(item => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p><b>$${item.price}</b></p>
+                    <button class="btn" onclick='addFoodItemToCart("${item.name}")'>
+                        Add to Cart
+                    </button>
+                </div>
+            `;
+        });
+    }
+
+    /* ADD MAIN CART PRODUCT */
+    function addToCart(name) {
+        const item = products.find(i => i.name === name);
+        cart.push(item);
+        document.getElementById("count").innerText = cart.length;
+        updateCart();
+    }
+
+    /* ADD FOOD ITEM */
+    function addFoodItemToCart(name) {
+        const item = foodItems.find(i => i.name === name);
+        cart.push(item);
+        document.getElementById("count").innerText = cart.length;
+        updateCart();
+    }
+
+    /* UPDATE CART */
+    function updateCart() {
+        let html = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.price;
+            html += `
+                <div class="cart-item">
+                    <span>${item.name} - $${item.price}</span>
+                    <button class="remove-btn" onclick="removeItem(${index})">X</button>
+                </div>
+            `;
+        });
+
+        document.getElementById("cartItems").innerHTML = html;
+        document.getElementById("total").innerText = total;
+    }
+
+    /* REMOVE FROM CART */
+    function removeItem(index) {
+        cart.splice(index, 1);
+        document.getElementById("count").innerText = cart.length;
+        updateCart();
+    }
+
+    /* OPEN / CLOSE CART */
+    function toggleCart() {
+        document.getElementById("cartPanel").classList.toggle("open");
+    }
+
+    /* SEARCH */
+    document.getElementById("search").addEventListener("input", e => {
+        const value = e.target.value.toLowerCase();
+        const filtered = products.filter(p => p.name.toLowerCase().includes(value));
+        loadProducts(filtered);
+    });
+
+    /* FILTER CATEGORY */
+    document.getElementById("filter").addEventListener("change", e => {
+        if (e.target.value === "all") return loadProducts(products);
+        const filtered = products.filter(p => p.category === e.target.value);
+        loadProducts(filtered);
+    });
+</script>
+
+</body>
+</html>

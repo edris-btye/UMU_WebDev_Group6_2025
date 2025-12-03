@@ -75,8 +75,11 @@
             width: 100%;
         }
         .info{
-            padding-top: 50px;
-            display: inline-block;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px;
+            align-items: center;
+            background: rgb(193, 140, 241);
             
         }
         #about{
@@ -102,6 +105,17 @@
             
             border-radius: 20px;
         }
+        .right{
+            display: flex;
+            flex-direction: column; 
+            gap: 20px;
+        }
+        
+        .members{
+            text-align: center;
+            color: red;
+            font-size: 1.1em;
+        }
     </style>
 </head>
 <body>
@@ -120,6 +134,7 @@
         
     </div>
     <div class="info">
+        <div class="right">
         <section id="about">
         <h1>About Us</h1>
         <p>Welcome to our shop, where quality, reliability, and customer satisfaction come first. We are committed to providing products that make your life easier, more convenient, and more enjoyable. From the moment you step into our store, our mission is to offer you the best service, genuine products, and a shopping experience you can trust.
@@ -128,13 +143,27 @@
 
             With experience, dedication, and a passion for excellent service, we continue to grow and improve so we can serve you better. Your satisfaction is our priority, and we are always here to help.</p>
         </section>
+
         <section id="mission">
             <h1>Mission</h1>
             <p>Our mission is to provide high-quality products at affordable prices while delivering a friendly, reliable, and customer-centered shopping experience. We aim to make every customer feel valued by offering trustworthy services, genuine products, and consistent support. Through honesty, convenience, and dedication, we strive to become a shop that people can depend on every day.</p>
         </section>
+        </div>
         <section>
-            <img src="poster.png" style="height: 700px;width: 500px;border-radius:20px ;">
+            <img src="poster.png" style="height: 700px;width: 500px;border-radius:20px ;padding: 50px;">
         </section>
     </div>
+    <footer>
+        <div class="members">
+        <h3>group members</h3>
+       
+            <li>Kiggundu Edris 2025-B072-32864</li>
+            <li>Agaba Emmanuel 2025-B221-32001</li>
+            <li>Ssekatawa Emmanuel 2025-B072-30507</li>
+            <li>Kabuye Allan 2025-B072-31989<li>
+            <LI>Mwesigye Karist 2025-B072-31987</LI>
+            <li>ssemwanga L Philly 2025-B072-34062</li>
+    </div>
+    </footer>
 </body>
 </html>

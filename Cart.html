@@ -9,7 +9,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            background: #f2f2f2;
+            background: #d0ec2f;
         }
 
         header {
@@ -111,6 +111,10 @@
             padding: 4px 8px;
             border-radius: 4px;
         }
+        .members{
+            text-align: center;
+            color: red;
+        }
     </style>
 </head>
 
@@ -139,9 +143,9 @@
 
 <script>
         const products = [
-        { name: "Food Cart", category: "food", price: 40, image: "images (5).jpeg" },
-        { name: "Shopping Cart", category: "shopping", price: 60, image: "Scc768ff83ca14ff4a1b12fe90d60338b1.jpg" },
-        { name: "Product Cart", category: "product", price: 50, image: "images (4).jpeg" }
+        { name: "Food Cart", category: "food", price: 40, image: "coca cola.jpg" },
+        { name: "Shopping Cart", category: "shopping", price: 60, image: "discounts.jpg" },
+        { name: "Product Cart", category: "product", price: 50, image: "3.webp" }
     ];
 
     
@@ -176,7 +180,7 @@
 
     loadProducts(products);
 
-    /* SHOW FOOD ITEMS */
+    
     function openFoodItems() {
         container.innerHTML = "";
 
@@ -194,7 +198,7 @@
         });
     }
 
-    /* ADD MAIN CART PRODUCT */
+    
     function addToCart(name) {
         const item = products.find(i => i.name === name);
         cart.push(item);
@@ -202,7 +206,7 @@
         updateCart();
     }
 
-    /* ADD FOOD ITEM */
+    
     function addFoodItemToCart(name) {
         const item = foodItems.find(i => i.name === name);
         cart.push(item);
@@ -210,7 +214,7 @@
         updateCart();
     }
 
-    /* UPDATE CART */
+    
     function updateCart() {
         let html = "";
         let total = 0;
@@ -229,32 +233,43 @@
         document.getElementById("total").innerText = total;
     }
 
-    /* REMOVE FROM CART */
+    
     function removeItem(index) {
         cart.splice(index, 1);
         document.getElementById("count").innerText = cart.length;
         updateCart();
     }
 
-    /* OPEN / CLOSE CART */
+    
     function toggleCart() {
         document.getElementById("cartPanel").classList.toggle("open");
     }
 
-    /* SEARCH */
+    
     document.getElementById("search").addEventListener("input", e => {
         const value = e.target.value.toLowerCase();
         const filtered = products.filter(p => p.name.toLowerCase().includes(value));
         loadProducts(filtered);
     });
 
-    /* FILTER CATEGORY */
+    
     document.getElementById("filter").addEventListener("change", e => {
         if (e.target.value === "all") return loadProducts(products);
         const filtered = products.filter(p => p.category === e.target.value);
         loadProducts(filtered);
     });
 </script>
-
+<footer>
+     <div class="members">
+        <h3>group members</h3>
+       
+            <li>Kiggundu Edris 2025-B072-32864</li>
+            <li>Agaba Emmanuel 2025-B221-32001</li>
+            <li>Ssekatawa Emmanuel 2025-B072-30507</li>
+            <li>Kabuye Allan 2025-B072-31989<li>
+            <LI>Mwesigye Karist 2025-B072-31987</LI>
+            <li>ssemwanga L Philly 2025-B072-34062</li>
+    </div>
+</footer>
 </body>
 </html>

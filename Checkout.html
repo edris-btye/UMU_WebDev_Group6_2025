@@ -11,16 +11,17 @@
             --card-bg: #f8f9fa;
             --text: #222222;
             --border: #e0e0e0;
+            --background:var(--orange);
         }
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fa;
+            background-color: #77a2e4;
             color: var(--text);
             line-height: 1.6;
         }
         header {
-            background: white;
+            background: orange;
             padding: 20px 20px;
             display: flex;
             justify-content: center;
@@ -32,7 +33,7 @@
         .logo {
             font-size: 32px;
             font-weight: bold;
-            color: var(--orange);
+            color: var(--black);
         }
         .container {
             max-width: 1000px;
@@ -41,6 +42,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            
         }
         @media (max-width: 768px) {
             .container { 
@@ -54,6 +56,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid var(--border);
+            background: rgb(148, 235, 19);
         }
         h2 {
             color: var(--orange);
@@ -84,6 +87,7 @@
         .order-summary {
             background: #fff;
             border: 1px solid var(--border);
+            background: rgb(147, 228, 27);
         }
         .summary-item {
             display: flex;
@@ -137,16 +141,22 @@
              cursor: pointer;
             font-weight: normal;
         }
+        .members{
+            color: red;
+            font-size: 1.1em;
+        }
+
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">ShopLift</div>
+        <img src="logo1.png" style=" width: 70px;height: 70px;border-radius: 40px;">
     </header>
 
     <div class="container">
-        <!-- Billing & Shipping Info -->
+        
         <div class="card">
             <h2>Billing & Shipping Information</h2>
             <form id="checkoutForm">
@@ -212,7 +222,16 @@
     </div>
 
     <footer>
-        © 2025 ShopLift - Africa's #1 Online Shopping Destination. All rights reserved.
+        <div class="members">
+        <h3>group members</h3>
+       
+            <li>Kiggundu Edris 2025-B072-32864</li>
+            <li>Agaba Emmanuel 2025-B221-32001</li>
+            <li>Ssekatawa Emmanuel 2025-B072-30507</li>
+            <li>Kabuye Allan 2025-B072-31989<li>
+            <LI>Mwesigye Karist 2025-B072-31987</LI>
+            <li>ssemwanga L Philly 2025-B072-34062</li>
+    </div>
     </footer>
 
 </body>
